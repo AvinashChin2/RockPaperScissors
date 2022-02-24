@@ -1,5 +1,9 @@
-import {Component} from 'react'
+import {Component, React} from 'react'
+import ReactDom from 'react-dom'
+import Popup from 'reactjs-popup'
+import {AiOutlineClose} from 'react-icons/ai'
 import Item from './components/Item'
+
 import './App.css'
 
 const choicesList = [
@@ -51,10 +55,35 @@ class App extends Component {
               />
             ))}
           </ul>
+
+          <Popup
+            modal
+            trigger={
+              <button type="button" className="rules-button">
+                Rules
+              </button>
+            }
+            position="left center"
+            className="remote"
+          >
+            {close => (
+              <div className="popup-container">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png"
+                  alt="rules"
+                  className="rules-image"
+                />
+                <button
+                  type="button"
+                  className="close-button"
+                  onClick={() => close()}
+                >
+                  <AiOutlineClose className="close" />
+                </button>
+              </div>
+            )}
+          </Popup>
         </div>
-        <button type="button" className="rules-button">
-          Rules
-        </button>
       </div>
     )
   }
